@@ -1,8 +1,7 @@
-def myFunction():
-    
-    sheet = SpreadsheetApp.getActive().getSheets()[0];
-    
-    data = {
+function myFunction() {
+  var sheet = SpreadsheetApp.getActive().getSheets()[0];
+
+  var data = {
     /home/Documents/Zucchini.csv
   };
 
@@ -11,9 +10,10 @@ def myFunction():
     'payload': data
   };
 
-  var response = UrlFetchApp.fetch('https://fat-zuc-dev.ma.openindustry.in/', options);
+  var response = UrlFetchApp.fetch('https://fat-zuc-dev.ma.openindustry.in/api/card/1/query/json', options);
 
   var responseData = JSON.parse(response.getContentText());
 
   sheet.appendRow(responseData);
 }
+
